@@ -1,7 +1,7 @@
 ﻿
 body
 {
-
+	background-color: black;
 	width: 100vw;
 	height: 100vh;
 	margin: 0;
@@ -18,10 +18,177 @@ div.container
 section.page
 {
 	display: flex;
-	justify-content: center;
+	justify-content: center; 
 	align-items: center;
 	width:100vw;
 	height:100vh;
 	scroll-snap-align: start;
 
+}
+.expand {
+	
+	font-size: 15vw;
+	position: relative;
+	transform: scale(0.1);
+	white-space: nowrap;
+	animation: expand 1s cubic-bezier(0.94, 0.06, 0.31, 0.95) 1s,expand2 1s cubic-bezier(.14,.66,.22,.92) 2.5s;
+	animation-fill-mode: forwards;
+	letter-spacing: 2px;
+	color: lawngreen;
+}
+span.wave {
+	z-index:10;
+	animation: letterWave 0.3s cubic-bezier(.58,.12,.6,2) 1s;
+	position: relative;
+	animation-fill-mode: forwards;
+}
+span.wave:nth-child(1){
+	animation-delay: 1.6s;
+}
+	span.wave:nth-child(2) {
+		animation-delay: 1.7s;
+	}
+	span.wave:nth-child(3) {
+		animation-delay: 1.8s;
+	}
+	span.wave:nth-child(4) {
+		animation-delay: 1.9s;
+	}
+
+	span.wave:nth-child(5) {
+		animation-delay: 2s;
+	}
+
+	span.wave:nth-child(6) {
+		animation-delay: 2.1s;
+	}
+span.shadow {
+	position: absolute;
+	z-index: -2;
+	top: 0vh;
+	left: 0vh;
+	animation: shadowFall 1s cubic-bezier(.14,.66,.22,.92) 2.5s;
+	animation-fill-mode: forwards;
+	opacity: 0;
+	font-weight: 700;
+	filter: blur(2px);
+}
+
+
+span.shadowMask {
+	position: absolute;
+	z-index: -2;
+	top: 0px;
+	left: 0vh;
+	-webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+	mask-image: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+	width: 200%;
+	height: 55vh;
+}
+span.shadowRev {
+	position: absolute;
+	z-index: -2;
+	bottom:0px;
+	right:0%;
+
+	animation: shadowFallRev 1s cubic-bezier(.14,.66,.22,.92) 2.5s;
+	animation-fill-mode: forwards;
+	opacity: 0;
+	font-weight: 700;
+	filter: blur(2px);
+}
+
+
+span.shadowMaskRev {
+	position: absolute;
+	z-index: -2;
+	bottom: 0px;
+	left: -100%;
+	-webkit-mask-image: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+	mask-image: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+	width: 200%;
+	height: 55vh;
+}
+div.backingBanner {
+	z-index: 5;
+	position: absolute;
+	width: 100%;
+	background-color: rgb(15,15,15);
+	animation: bannerExpand 0.3s ease-out 2.5s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes expand
+{
+	0%
+	{
+		transform: scale(0.1);
+	}
+	100% 
+	{
+		transform: scale(1);
+	}
+}
+@keyframes expand2
+{
+	0% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(1.2);
+	}
+}
+@keyframes bannerExpand
+{
+	0%{
+		height:0vh;
+	}
+	100% {
+		height: 25vh;
+	}
+}
+@keyframes letterWave
+{
+	0% {
+		bottom: 0vh;
+		font-weight:400;
+	}
+	50% {
+		bottom: 6vh;
+		color: lawngreen;
+		font-weight: 400;
+	}
+	100% {
+		bottom: 0vh;
+		font-weight: bolder;
+		color: white;
+		font-weight: 900;
+	}
+}
+@keyframes shadowFall
+{
+	0% {
+		top: 0vh;
+		left: 0vw;
+		opacity: 1;
+	}
+	100% {
+		top: 0.8em;
+		color: lawngreen;
+		opacity: 1;
+	}
+}
+@keyframes shadowFallRev {
+	0% {
+	bottom: 0vh;
+		right: 0vw;
+		opacity: 1;
+	}
+
+	100% {
+		bottom: 0.8em;
+		color: lawngreen;
+		opacity: 1;
+	}
 }
