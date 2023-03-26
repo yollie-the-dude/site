@@ -139,6 +139,7 @@ span.shadowMaskRev {
 	top: calc(-7vh * (var(--y) - 0.5) - 50vh);
 }
 	.parallaxBack.child {
+		z-index: -10;
 		left: calc(-7vw * (var(--x) - 0.5 ) + 25vw);
 		top: calc(-7vh * (var(--y) - 0.5) + 25vh);
 	}
@@ -148,9 +149,9 @@ span.shadowMaskRev {
 	width: 300vw;
 	height: 300vh;
 	background-size: 10vw 10vw;
+	-webkit-backdrop-filter: blur(20px) brightness(0.3);
 	backdrop-filter: blur(20px) brightness(0.3);
 	background-image: linear-gradient(to right, rgba(100,100,100,0.2) 2px,transparent 2px), linear-gradient(to bottom, rgba(100,100,100,0.2) 2px, transparent 2px);
-
 }
 
 @keyframes opacityIncrease
