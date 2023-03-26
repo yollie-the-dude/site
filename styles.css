@@ -16,15 +16,61 @@ div.container
 }
 section.page
 {
-	display: flex;
-	justify-content: center; 
-	align-items: center;
+
+	position:relative;
 	width:100vw;
 	height:100vh;
 	scroll-snap-align: start;
 
 }
+
+.flexWrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction:column;
+	width: 100vw;
+	height: 100vh;
+}
+a.social {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 0.5vh solid lightgreen;
+	background-color: transparent;
+	border-radius: 100%;
+	width: min(10vh, 10vw);
+	height: min(10vh, 10vw);
+	transition: background-color ease-in-out 0.1s, transform cubic-bezier(.58,.12,.6,2) 0.1s;
+}
+i.social {
+	color: lightgreen;
+	font-size: min(6vh, 6vw);
+	transition: color ease-in-out 0.2s;
+}
+a.social:hover {
+	background-color: lightgreen;
+	transform: scale(1.2,1.2);
+}
+	a.social:hover  > .social {
+		color: black;
+	}
+.flexWrapper.iconBar {
+	flex-direction: row;
+	position: absolute;
+	height: min(12vh, 12vw);
+	width: 0vw;
+	justify-content: space-evenly;
+	bottom: calc(-2vh * (var(--y) - 0.5 ) + 4vh);
+	left: calc(2vw * (var(--x) - 0.5 ));
+	animation: textOpen 1.5s cubic-bezier(.14,.66,.22,.92) 2.7s;
+	animation-fill-mode: forwards;
+	overflow:clip;
+	flex-wrap:nowrap;
+}
 .expand {
+	margin-left: -40vw;
+	user-select: none;
 	font-size: 15vw;
 	position: relative;
 	transform: scale(0.1);
@@ -33,6 +79,22 @@ section.page
 	animation-fill-mode: forwards;
 	letter-spacing: -20px;
 	color: lawngreen;
+	text-shadow: 0px 0px 1vw black;
+}
+p.subText {
+	font-size: max(2vw,1.6vh);
+	color: lightgreen;
+	position: relative;
+	width: 0vw;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: clip;
+	margin-top: calc(-50vh + 8vw);
+	margin-left: 7vw;
+	text-shadow: 0px 0px 0.5vw black;
+	font-weight: 900;
+	animation: textOpen 4s linear 2.7s;
+	animation-fill-mode: forwards;
 }
 span.wave {
 	z-index:10;
@@ -94,6 +156,7 @@ span.shadowMask {
 	mask-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
 	width: 200%;
 	height: 55vh;
+	text-shadow: 0px 0px 0px transparent;
 }
 .shadowRev {
 	position: absolute;
@@ -119,12 +182,13 @@ span.shadowMask {
 span.shadowMaskRev {
 	position: absolute;
 	bottom: 0px;
-	z-index:1;
+	z-index: 1;
 	left: -100%;
 	-webkit-mask-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
 	mask-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
 	width: 200%;
 	height: 55vh;
+	text-shadow: 0px 0px 0px transparent;
 }
 
 .parallaxBack {
@@ -150,10 +214,18 @@ span.shadowMaskRev {
 	height: 300vh;
 	background-size: 10vw 10vw;
 	-webkit-backdrop-filter: blur(20px) brightness(0.3);
-	backdrop-filter: blur(20px) brightness(0.3);
+	backdrop-filter: blur(10px) brightness(0.15);
 	background-image: linear-gradient(to right, rgba(100,100,100,0.2) 2px,transparent 2px), linear-gradient(to bottom, rgba(100,100,100,0.2) 2px, transparent 2px);
 }
+@keyframes textOpen {
+	0% {
+		width:0vw;
+	}
 
+	100% {
+		width: 100vw;
+	}
+}
 @keyframes opacityIncrease
 {
 	0%{
