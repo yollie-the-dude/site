@@ -87,11 +87,19 @@
                         </span>
                     </span>
                 </span>
-  
+
             </p>
+            <div class="parallaxBack">
+                <div class="parallaxBack child">
+                    <video autoplay muted loop style="width:150vw;height:150vh;z-index:-100;object-fit:cover">
+                        <source src="Showreel.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="grid">
+                </div>
+                <div style="background-color:rgba(76, 255, 0,0.2);position:absolute;width:200vw;height:200vh;z-index:-1"></div>
 
-
-
+            </div>
         </section>
         <section class="page"> 
             <h1>Yollie2</h1>
@@ -104,3 +112,16 @@
 
 </body>
 </html>
+<script>
+    const pos = { x: 0, y: 0 };
+    const saveCursorPosition = function (x, y) {
+        pos.x = (x / window.innerWidth).toFixed(2);
+        pos.y = (y / window.innerHeight).toFixed(2);
+        document.documentElement.style.setProperty('--x', pos.x);
+        document.documentElement.style.setProperty('--y', pos.y);
+    }
+    document.addEventListener('mousemove', e => { saveCursorPosition(e.clientX, e.clientY); })
+    window.onload = saveCursorPosition(window.innerWidth / 2, window.innerHeight / 2)
+
+
+</script>
